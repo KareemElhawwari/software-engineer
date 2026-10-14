@@ -1,1 +1,15 @@
+name: simple CI/CD demo
+on: push
 
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Job 1 - build/test would run here"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job 2 - deploy would run here"
